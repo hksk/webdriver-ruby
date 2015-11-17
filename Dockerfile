@@ -12,4 +12,9 @@ RUN mv /firefox /opt/
 RUN ln -s /opt/firefox/firefox-bin /usr/bin/firefox
 RUN firefox -v
 #Siempre se debe dejar ejecutando un proceso
+
+ADD start.sh start.sh
+
+ENTRYPOINT ["/start.sh"]
+
 CMD ["bash"]
