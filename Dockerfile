@@ -14,7 +14,12 @@ RUN firefox -v
 #Siempre se debe dejar ejecutando un proceso
 
 ADD start.sh start.sh
-
 ENTRYPOINT ["/start.sh"]
+ENV DISPLAY :1
+RUN echo $DISPLAY
+
+ADD test_webdriver.rb /tmp/test_webdriver.rb
+RUN gem install selenium-webdriver
+RUN xvfb-run ruby /tmp/test_webdriver.rb
 
 CMD ["bash"]
